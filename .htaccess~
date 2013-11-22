@@ -1,0 +1,4 @@
+setEnv APPLICATION_ENV development
+RewriteEngine On
+RewriteRule ^(.*)$ - [E=BASE:%1]
+RewriteRule ^(.*)$ %{ENV:BASE}public [NC,L]

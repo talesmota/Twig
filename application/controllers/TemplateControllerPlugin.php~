@@ -1,0 +1,19 @@
+<?php
+
+class TemplateControllerPlugin extends Zend_Controller_Plugin_Abstract {
+	public function __construct(){
+
+		require_once APPLICATION_PATH.'/../library/Twig/Autoloader.php';
+		
+		Twig_Autoloader::register();
+
+		$loader = new Twig_Loader_Filesystem( APPLICATION_PATH.'/views/templates');
+		$this->twig = new Twig_Environment($loader, array( 
+		      'cache' => APPLICATION_PATH.'/compilation_cache',
+		      'auto_reload' => TRUE ));
+	}
+
+	public function postDispatch(Zend_Controller_Request_Abstract $request){
+		
+	}
+}
